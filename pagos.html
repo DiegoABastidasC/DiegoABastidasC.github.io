@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mock | Pagos</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrapper">
+        <a class="brand" href="index.html">Diego Bastidas</a>
+        <nav class="site-nav" aria-label="Navegación principal">
+          <a href="index.html">Inicio</a>
+          <a href="pagos.html" class="active">Pagos</a>
+          <a href="ventas.html">Ventas</a>
+          <a href="agendamiento.html">Agendamiento</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container hero">
+      <h1>Mock de Pagos</h1>
+      <p>Vista de ejemplo para gestión de cobros sin conexión a backend.</p>
+
+      <section class="panel">
+        <h2>Resumen rápido</h2>
+        <p>Total recaudado del día: <strong>$2,850.00</strong></p>
+        <p>Pagos pendientes por confirmar: <strong>3</strong></p>
+      </section>
+
+      <section class="panel">
+        <h2>Últimas transacciones</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Cliente</th>
+              <th>Monto</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>PAY-1024</td>
+              <td>Ana López</td>
+              <td>$120.00</td>
+              <td><span class="status ok">Pagado</span></td>
+            </tr>
+            <tr>
+              <td>PAY-1025</td>
+              <td>Marco Díaz</td>
+              <td>$350.00</td>
+              <td><span class="status warn">Pendiente</span></td>
+            </tr>
+            <tr>
+              <td>PAY-1026</td>
+              <td>Laura Pérez</td>
+              <td>$80.00</td>
+              <td><span class="status ok">Pagado</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </body>
+</html>
