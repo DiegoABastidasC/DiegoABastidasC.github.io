@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mock | Agendamiento</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrapper">
+        <a class="brand" href="index.html">Diego Bastidas</a>
+        <nav class="site-nav" aria-label="Navegación principal">
+          <a href="index.html">Inicio</a>
+          <a href="pagos.html">Pagos</a>
+          <a href="ventas.html">Ventas</a>
+          <a href="agendamiento.html" class="active">Agendamiento</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container hero">
+      <h1>Mock de Agendamiento</h1>
+      <p>Gestión de citas y disponibilidad semanal en una interfaz simple.</p>
+
+      <section class="panel">
+        <h2>Nueva cita</h2>
+        <form>
+          <div class="grid">
+            <label>
+              Cliente
+              <input type="text" placeholder="Nombre del cliente" />
+            </label>
+            <label>
+              Servicio
+              <input type="text" placeholder="Tipo de sesión" />
+            </label>
+            <label>
+              Fecha
+              <input type="date" />
+            </label>
+            <label>
+              Hora
+              <input type="time" />
+            </label>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2>Próximas citas</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Cliente</th>
+              <th>Servicio</th>
+              <th>Fecha</th>
+              <th>Hora</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Camila Ruiz</td>
+              <td>Consultoría UX</td>
+              <td>2026-04-20</td>
+              <td>09:00</td>
+            </tr>
+            <tr>
+              <td>Jorge Núñez</td>
+              <td>Revisión de portafolio</td>
+              <td>2026-04-21</td>
+              <td>14:30</td>
+            </tr>
+            <tr>
+              <td>Sofía Mena</td>
+              <td>Sesión técnica</td>
+              <td>2026-04-22</td>
+              <td>11:15</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </body>
+</html>
