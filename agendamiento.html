@@ -12,6 +12,7 @@
         <a class="brand" href="index.html">Diego Bastidas</a>
         <nav class="site-nav" aria-label="Navegación principal">
           <a href="index.html">Inicio</a>
+          <a href="tienda.html">Tienda</a>
           <a href="pagos.html">Pagos</a>
           <a href="ventas.html">Ventas</a>
           <a href="agendamiento.html" class="active">Agendamiento</a>
@@ -25,26 +26,30 @@
 
       <section class="panel">
         <h2>Nueva cita</h2>
-        <form>
+        <form id="appointment-form">
           <div class="grid">
             <label>
               Cliente
-              <input type="text" placeholder="Nombre del cliente" />
+              <input id="client" type="text" placeholder="Nombre del cliente" required />
             </label>
             <label>
               Servicio
-              <input type="text" placeholder="Tipo de sesión" />
+              <input id="service" type="text" placeholder="Tipo de sesión" required />
             </label>
             <label>
               Fecha
-              <input type="date" />
+              <input id="date" type="date" required />
             </label>
             <label>
               Hora
-              <input type="time" />
+              <input id="time" type="time" required />
             </label>
           </div>
+          <button class="button" type="submit">Agendar cita</button>
         </form>
+        <p class="helper-text">
+          Nota: esta lista es temporal en memoria. Si actualizas el navegador, las citas nuevas no se guardan.
+        </p>
       </section>
 
       <section class="panel">
@@ -58,7 +63,7 @@
               <th>Hora</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="appointments-body">
             <tr>
               <td>Camila Ruiz</td>
               <td>Consultoría UX</td>
@@ -81,5 +86,30 @@
         </table>
       </section>
     </main>
+
+    <script>
+      const form = document.getElementById('appointment-form');
+      const appointmentsBody = document.getElementById('appointments-body');
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const client = document.getElementById('client').value.trim();
+        const service = document.getElementById('service').value.trim();
+        const date = document.getElementById('date').value;
+        const time = document.getElementById('time').value;
+
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${client}</td>
+          <td>${service}</td>
+          <td>${date}</td>
+          <td>${time}</td>
+        `;
+
+        appointmentsBody.appendChild(row);
+        form.reset();
+      });
+    </script>
   </body>
 </html>
