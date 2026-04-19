@@ -177,6 +177,20 @@ main {
   border-bottom: 1px solid rgba(156, 163, 175, 0.2);
 }
 
+
+@media (max-width: 768px) {
+  .table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table th,
+  .table td {
+    white-space: nowrap;
+  }
+}
+
 .status {
   font-size: 0.82rem;
   font-weight: 600;
