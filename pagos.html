@@ -30,6 +30,35 @@
       </section>
 
       <section class="panel">
+        <h2>Pago con tarjeta (ejercicio)</h2>
+        <p class="warning-text">
+          ⚠️ Este es un ejercicio de práctica. No uses información real de tarjetas de crédito.
+          Usa datos ficticios o de prueba.
+        </p>
+        <form>
+          <div class="grid">
+            <label>
+              Nombre en la tarjeta
+              <input type="text" placeholder="Ej: Maria Perez" required />
+            </label>
+            <label>
+              Número de tarjeta
+              <input type="text" placeholder="0000 0000 0000 0000" inputmode="numeric" required />
+            </label>
+            <label>
+              Fecha de expiración
+              <input type="text" placeholder="MM/AA" required />
+            </label>
+            <label>
+              CVV
+              <input type="password" placeholder="123" inputmode="numeric" required />
+            </label>
+          </div>
+          <button class="button" type="submit">Pagar ahora</button>
+        </form>
+      </section>
+
+      <section class="panel">
         <h2>Últimas transacciones</h2>
         <table class="table">
           <thead>
