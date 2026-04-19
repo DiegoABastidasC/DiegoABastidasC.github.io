@@ -5,18 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mock | Tienda</title>
     <link rel="stylesheet" href="styles.css" />
-    <style>
-      .product-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1rem; }
-      .product-card { background:linear-gradient(180deg,#1f2937,#111827); border:1px solid rgba(156,163,175,.2); border-radius:1rem; padding:1rem; }
-      .product-card h3 { margin: .5rem 0; }
-      .product-media { width:100%; border-radius:.7rem; background:rgba(148,163,184,.14); border:1px solid rgba(148,163,184,.28); text-align:center; font-size:2.4rem; padding:.5rem 0; margin-bottom:.7rem; }
-      .product-meta { margin:.25rem 0; }
-      .store-toolbar { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:1rem; }
-      .button { border:0; cursor:pointer; display:inline-block; }
-      .modal { position:fixed; inset:0; background:rgba(2,6,23,.7); display:flex; align-items:center; justify-content:center; padding:1rem; }
-      .modal-content { width:min(760px,96vw); max-height:90vh; overflow:auto; background:#111827; border:1px solid rgba(156,163,175,.3); border-radius:1rem; padding:1rem; }
-      .hidden { display:none; }
-    </style>
   </head>
   <body>
     <header class="site-header">
@@ -34,161 +22,54 @@
 
     <main class="container hero">
       <h1>Mock de Tienda</h1>
-      <p>Catálogo en tarjetas con imagen (emoji), precio y stock disponible.</p>
+      <p>Catálogo simple con productos, carrito de compras y acceso al pago.</p>
 
       <section class="panel">
-        <div class="store-toolbar">
-          <h2>Productos</h2>
-          <button id="open-cart" class="button" type="button">Ver carrito (0)</button>
-        </div>
-
-        <div class="product-grid">
-          <article class="product-card">
-            <div class="product-media" aria-label="Imagen de producto">💼</div>
-            <h3>Portafolio Starter</h3>
-            <p class="product-meta">Precio: <strong>$35.00</strong></p>
-            <p class="product-meta">Stock: <strong>12 unidades</strong></p>
-            <button class="button add-cart" type="button" data-name="Portafolio Starter" data-price="35">Añadir al carrito</button>
-          </article>
-
-          <article class="product-card">
-            <div class="product-media" aria-label="Imagen de producto">🔥</div>
-            <h3>Pack Fuego Creativo</h3>
-            <p class="product-meta">Precio: <strong>$42.00</strong></p>
-            <p class="product-meta">Stock: <strong>9 unidades</strong></p>
-            <button class="button add-cart" type="button" data-name="Pack Fuego Creativo" data-price="42">Añadir al carrito</button>
-          </article>
-
-          <article class="product-card">
-            <div class="product-media" aria-label="Imagen de producto">🧊</div>
-            <h3>Set Hielo Minimal</h3>
-            <p class="product-meta">Precio: <strong>$28.00</strong></p>
-            <p class="product-meta">Stock: <strong>18 unidades</strong></p>
-            <button class="button add-cart" type="button" data-name="Set Hielo Minimal" data-price="28">Añadir al carrito</button>
-          </article>
-
-          <article class="product-card">
-            <div class="product-media" aria-label="Imagen de producto">💼</div>
-            <h3>Portafolio Pro</h3>
-            <p class="product-meta">Precio: <strong>$65.00</strong></p>
-            <p class="product-meta">Stock: <strong>7 unidades</strong></p>
-            <button class="button add-cart" type="button" data-name="Portafolio Pro" data-price="65">Añadir al carrito</button>
-          </article>
-
-          <article class="product-card">
-            <div class="product-media" aria-label="Imagen de producto">🔥</div>
-            <h3>Tema Fuego Night</h3>
-            <p class="product-meta">Precio: <strong>$31.00</strong></p>
-            <p class="product-meta">Stock: <strong>11 unidades</strong></p>
-            <button class="button add-cart" type="button" data-name="Tema Fuego Night" data-price="31">Añadir al carrito</button>
-          </article>
-
-          <article class="product-card">
-            <div class="product-media" aria-label="Imagen de producto">🧊</div>
-            <h3>Icons Hielo Pack</h3>
-            <p class="product-meta">Precio: <strong>$22.00</strong></p>
-            <p class="product-meta">Stock: <strong>24 unidades</strong></p>
-            <button class="button add-cart" type="button" data-name="Icons Hielo Pack" data-price="22">Añadir al carrito</button>
-          </article>
-        </div>
+        <h2>Productos destacados</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Categoría</th>
+              <th>Precio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Teclado mecánico Aurora</td><td>Periféricos</td><td>$89.00</td></tr>
+            <tr><td>Mouse inalámbrico Nova</td><td>Periféricos</td><td>$34.00</td></tr>
+            <tr><td>Audífonos Pulse X</td><td>Audio</td><td>$57.00</td></tr>
+            <tr><td>Monitor 24" Skyline</td><td>Monitores</td><td>$179.00</td></tr>
+            <tr><td>Base para laptop FlexStand</td><td>Accesorios</td><td>$29.00</td></tr>
+            <tr><td>Webcam HD FocusCam</td><td>Streaming</td><td>$46.00</td></tr>
+            <tr><td>Micrófono StreamVoice</td><td>Audio</td><td>$73.00</td></tr>
+            <tr><td>Hub USB-C 7 en 1</td><td>Accesorios</td><td>$41.00</td></tr>
+            <tr><td>Disco SSD 1TB Turbo</td><td>Almacenamiento</td><td>$99.00</td></tr>
+            <tr><td>Alfombrilla RGB Glide</td><td>Accesorios</td><td>$18.00</td></tr>
+          </tbody>
+        </table>
       </section>
-    </main>
 
-    <div id="cart-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="cart-title">
-      <div class="modal-content">
-        <div class="store-toolbar">
-          <h2 id="cart-title">Carrito de compras</h2>
-          <button id="close-cart" class="button" type="button">Cerrar</button>
-        </div>
-
+      <section class="panel">
+        <h2>Carrito de compras</h2>
         <table class="table">
           <thead>
             <tr>
               <th>Producto</th>
               <th>Cantidad</th>
-              <th>Precio</th>
+              <th>Precio unitario</th>
               <th>Subtotal</th>
             </tr>
           </thead>
-          <tbody id="cart-body">
-            <tr>
-              <td colspan="4">Tu carrito está vacío.</td>
-            </tr>
+          <tbody>
+            <tr><td>Teclado mecánico Aurora</td><td>1</td><td>$89.00</td><td>$89.00</td></tr>
+            <tr><td>Mouse inalámbrico Nova</td><td>2</td><td>$34.00</td><td>$68.00</td></tr>
+            <tr><td>Disco SSD 1TB Turbo</td><td>1</td><td>$99.00</td><td>$99.00</td></tr>
+            <tr><td>Alfombrilla RGB Glide</td><td>3</td><td>$18.00</td><td>$54.00</td></tr>
           </tbody>
         </table>
-
-        <p><strong id="cart-total">Total: $0.00</strong></p>
-        <a class="button" href="pagos.html">Ir a pagar</a>
-      </div>
-    </div>
-
-    <script>
-      const openCartBtn = document.getElementById('open-cart');
-      const closeCartBtn = document.getElementById('close-cart');
-      const cartModal = document.getElementById('cart-modal');
-      const cartBody = document.getElementById('cart-body');
-      const cartTotal = document.getElementById('cart-total');
-      const addButtons = document.querySelectorAll('.add-cart');
-
-      const cart = new Map();
-
-      const formatPrice = (value) => `$${value.toFixed(2)}`;
-
-      const renderCart = () => {
-        const entries = [...cart.entries()];
-        const totalItems = entries.reduce((acc, [, item]) => acc + item.qty, 0);
-        const totalAmount = entries.reduce((acc, [, item]) => acc + item.qty * item.price, 0);
-
-        openCartBtn.textContent = `Ver carrito (${totalItems})`;
-        cartTotal.textContent = `Total: ${formatPrice(totalAmount)}`;
-
-        if (entries.length === 0) {
-          cartBody.innerHTML = '<tr><td colspan="4">Tu carrito está vacío.</td></tr>';
-          return;
-        }
-
-        cartBody.innerHTML = entries
-          .map(
-            ([name, item]) => `
-            <tr>
-              <td>${name}</td>
-              <td>${item.qty}</td>
-              <td>${formatPrice(item.price)}</td>
-              <td>${formatPrice(item.qty * item.price)}</td>
-            </tr>
-          `
-          )
-          .join('');
-      };
-
-      addButtons.forEach((btn) => {
-        btn.addEventListener('click', () => {
-          const name = btn.dataset.name;
-          const price = Number(btn.dataset.price);
-
-          if (cart.has(name)) {
-            cart.get(name).qty += 1;
-          } else {
-            cart.set(name, { qty: 1, price });
-          }
-
-          renderCart();
-        });
-      });
-
-      openCartBtn.addEventListener('click', () => {
-        cartModal.classList.remove('hidden');
-      });
-
-      closeCartBtn.addEventListener('click', () => {
-        cartModal.classList.add('hidden');
-      });
-
-      cartModal.addEventListener('click', (event) => {
-        if (event.target === cartModal) {
-          cartModal.classList.add('hidden');
-        }
-      });
-    </script>
+        <p><strong>Total del carrito: $310.00</strong></p>
+        <a class="button" href="pagos.html">Botón de pago</a>
+      </section>
+    </main>
   </body>
 </html>
