@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mock | Tienda</title>
     <link rel="stylesheet" href="styles.css" />
+    <style>
+      .product-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1rem; }
+      .product-card { background:linear-gradient(180deg,#1f2937,#111827); border:1px solid rgba(156,163,175,.2); border-radius:1rem; padding:1rem; }
+      .product-card h3 { margin: .5rem 0; }
+      .product-media { width:100%; border-radius:.7rem; background:rgba(148,163,184,.14); border:1px solid rgba(148,163,184,.28); text-align:center; font-size:2.4rem; padding:.5rem 0; margin-bottom:.7rem; }
+      .product-meta { margin:.25rem 0; }
+      .store-toolbar { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:1rem; }
+      .button { border:0; cursor:pointer; display:inline-block; }
+      .modal { position:fixed; inset:0; background:rgba(2,6,23,.7); display:flex; align-items:center; justify-content:center; padding:1rem; }
+      .modal-content { width:min(760px,96vw); max-height:90vh; overflow:auto; background:#111827; border:1px solid rgba(156,163,175,.3); border-radius:1rem; padding:1rem; }
+      .hidden { display:none; }
+    </style>
   </head>
   <body>
     <header class="site-header">
