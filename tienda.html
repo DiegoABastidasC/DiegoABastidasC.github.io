@@ -105,6 +105,9 @@
       const cartTotal = document.getElementById('cartTotal');
       const cartContent = document.getElementById('cartContent');
       const cartModal = document.getElementById('cartModal');
+      const productsById = new Map(
+        Array.from(productCards).map((card) => [card.dataset.id, card])
+      );
 
       function renderCart() {
         const items = Array.from(cart.values());
@@ -127,6 +130,7 @@
                 <th>Cantidad</th>
                 <th>Precio unitario</th>
                 <th>Subtotal</th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -138,6 +142,9 @@
                   <td>${item.quantity}</td>
                   <td>$${item.price.toFixed(2)}</td>
                   <td>$${(item.quantity * item.price).toFixed(2)}</td>
+                  <td>
+                    <button class="button button-secondary remove-from-cart" type="button" data-id="${item.id}">Quitar</button>
+                  </td>
                 </tr>`
                 )
                 .join('')}
@@ -176,6 +183,42 @@
 
           renderCart();
         });
+      });
+
+
+      cartContent.addEventListener('click', (event) => {
+        const removeButton = event.target.closest('.remove-from-cart');
+
+        if (!removeButton) {
+          return;
+        }
+
+        const itemId = removeButton.dataset.id;
+        const item = cart.get(itemId);
+
+        if (!item) {
+          return;
+        }
+
+        const productCard = productsById.get(itemId);
+        if (productCard) {
+          const updatedStock = Number(productCard.dataset.stock) + item.quantity;
+          productCard.dataset.stock = String(updatedStock);
+
+          const stockCount = productCard.querySelector('.stock-count');
+          if (stockCount) {
+            stockCount.textContent = productCard.dataset.stock;
+          }
+
+          const addButton = productCard.querySelector('.add-to-cart');
+          if (addButton && updatedStock > 0) {
+            addButton.disabled = false;
+            addButton.textContent = 'Añadir al carrito';
+          }
+        }
+
+        cart.delete(itemId);
+        renderCart();
       });
 
       document.getElementById('openCart').addEventListener('click', () => {
