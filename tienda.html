@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mock | Tienda</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrapper">
+        <a class="brand" href="index.html">Diego Bastidas</a>
+        <nav class="site-nav" aria-label="Navegación principal">
+          <a href="index.html">Inicio</a>
+          <a href="tienda.html" class="active">Tienda</a>
+          <a href="pagos.html">Pagos</a>
+          <a href="ventas.html">Ventas</a>
+          <a href="agendamiento.html">Agendamiento</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container hero">
+      <h1>Mock de Tienda</h1>
+      <p>Catálogo en tarjetas con carrito modal y acceso rápido al pago.</p>
+
+      <section class="panel">
+        <div class="store-toolbar">
+          <h2>Productos</h2>
+          <button id="open-cart" class="button" type="button">Ver carrito (0)</button>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card">
+            <span class="product-emoji" aria-hidden="true">💼</span>
+            <h3>Portafolio Starter</h3>
+            <p>Plantilla para CV y portafolio personal.</p>
+            <p class="product-price">$35.00</p>
+            <button class="button add-cart" type="button" data-name="Portafolio Starter" data-price="35">Añadir al carrito</button>
+          </article>
+          <article class="product-card">
+            <span class="product-emoji" aria-hidden="true">🔥</span>
+            <h3>Pack Fuego Creativo</h3>
+            <p>Recursos visuales con estilo energético.</p>
+            <p class="product-price">$42.00</p>
+            <button class="button add-cart" type="button" data-name="Pack Fuego Creativo" data-price="42">Añadir al carrito</button>
+          </article>
+          <article class="product-card">
+            <span class="product-emoji" aria-hidden="true">🧊</span>
+            <h3>Set Hielo Minimal</h3>
+            <p>UI kit con tonos fríos y diseño limpio.</p>
+            <p class="product-price">$28.00</p>
+            <button class="button add-cart" type="button" data-name="Set Hielo Minimal" data-price="28">Añadir al carrito</button>
+          </article>
+          <article class="product-card">
+            <span class="product-emoji" aria-hidden="true">💼</span>
+            <h3>Portafolio Pro</h3>
+            <p>Layout avanzado para mostrar proyectos.</p>
+            <p class="product-price">$65.00</p>
+            <button class="button add-cart" type="button" data-name="Portafolio Pro" data-price="65">Añadir al carrito</button>
+          </article>
+          <article class="product-card">
+            <span class="product-emoji" aria-hidden="true">🔥</span>
+            <h3>Tema Fuego Night</h3>
+            <p>Paleta cálida para landing pages modernas.</p>
+            <p class="product-price">$31.00</p>
+            <button class="button add-cart" type="button" data-name="Tema Fuego Night" data-price="31">Añadir al carrito</button>
+          </article>
+          <article class="product-card">
+            <span class="product-emoji" aria-hidden="true">🧊</span>
+            <h3>Icons Hielo Pack</h3>
+            <p>Pack de iconos en estilo glass y frost.</p>
+            <p class="product-price">$22.00</p>
+            <button class="button add-cart" type="button" data-name="Icons Hielo Pack" data-price="22">Añadir al carrito</button>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <div id="cart-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+      <div class="modal-content">
+        <div class="store-toolbar">
+          <h2 id="cart-title">Carrito de compras</h2>
+          <button id="close-cart" class="button" type="button">Cerrar</button>
+        </div>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Cantidad</th>
+              <th>Precio</th>
+              <th>Subtotal</th>
+            </tr>
+          </thead>
+          <tbody id="cart-body">
+            <tr>
+              <td colspan="4">Tu carrito está vacío.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p><strong id="cart-total">Total: $0.00</strong></p>
+        <a class="button" href="pagos.html">Ir a pagar</a>
+      </div>
+    </div>
+
+    <script>
+      const openCartBtn = document.getElementById('open-cart');
+      const closeCartBtn = document.getElementById('close-cart');
+      const cartModal = document.getElementById('cart-modal');
+      const cartBody = document.getElementById('cart-body');
+      const cartTotal = document.getElementById('cart-total');
+      const addButtons = document.querySelectorAll('.add-cart');
+
+      const cart = new Map();
+
+      const formatPrice = (value) => `$${value.toFixed(2)}`;
+
+      const renderCart = () => {
+        const entries = [...cart.entries()];
+        const totalItems = entries.reduce((acc, [, item]) => acc + item.qty, 0);
+        const totalAmount = entries.reduce((acc, [, item]) => acc + item.qty * item.price, 0);
+
+        openCartBtn.textContent = `Ver carrito (${totalItems})`;
+        cartTotal.textContent = `Total: ${formatPrice(totalAmount)}`;
+
+        if (entries.length === 0) {
+          cartBody.innerHTML = '<tr><td colspan="4">Tu carrito está vacío.</td></tr>';
+          return;
+        }
+
+        cartBody.innerHTML = entries
+          .map(
+            ([name, item]) => `
+            <tr>
+              <td>${name}</td>
+              <td>${item.qty}</td>
+              <td>${formatPrice(item.price)}</td>
+              <td>${formatPrice(item.qty * item.price)}</td>
+            </tr>
+          `
+          )
+          .join('');
+      };
+
+      addButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const name = btn.dataset.name;
+          const price = Number(btn.dataset.price);
+
+          if (cart.has(name)) {
+            cart.get(name).qty += 1;
+          } else {
+            cart.set(name, { qty: 1, price });
+          }
+
+          renderCart();
+        });
+      });
+
+      openCartBtn.addEventListener('click', () => {
+        cartModal.classList.remove('hidden');
+      });
+
+      closeCartBtn.addEventListener('click', () => {
+        cartModal.classList.add('hidden');
+      });
+
+      cartModal.addEventListener('click', (event) => {
+        if (event.target === cartModal) {
+          cartModal.classList.add('hidden');
+        }
+      });
+    </script>
+  </body>
+</html>
