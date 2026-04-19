@@ -36,7 +36,10 @@
           ⚠️ Este es un ejercicio de práctica. No uses información real de tarjetas de crédito.
           Usa datos ficticios o de prueba.
         </p>
-        <form>
+
+        <button class="button" id="openPaymentForm" type="button">Mostrar formulario de pago</button>
+
+        <form id="paymentForm" hidden>
           <div class="grid">
             <label>
               Nombre en la tarjeta
@@ -93,5 +96,15 @@
         </table>
       </section>
     </main>
+
+    <script>
+      const openPaymentFormButton = document.getElementById('openPaymentForm');
+      const paymentForm = document.getElementById('paymentForm');
+
+      openPaymentFormButton.addEventListener('click', () => {
+        paymentForm.hidden = false;
+        openPaymentFormButton.hidden = true;
+      });
+    </script>
   </body>
 </html>

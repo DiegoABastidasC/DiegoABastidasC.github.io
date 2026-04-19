@@ -22,54 +22,177 @@
 
     <main class="container hero">
       <h1>Mock de Tienda</h1>
-      <p>Catálogo simple con productos, carrito de compras y acceso al pago.</p>
+      <p>Catálogo con productos en cards, control de stock y carrito flotante.</p>
 
       <section class="panel">
         <h2>Productos destacados</h2>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Producto</th>
-              <th>Categoría</th>
-              <th>Precio</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Teclado mecánico Aurora</td><td>Periféricos</td><td>$89.00</td></tr>
-            <tr><td>Mouse inalámbrico Nova</td><td>Periféricos</td><td>$34.00</td></tr>
-            <tr><td>Audífonos Pulse X</td><td>Audio</td><td>$57.00</td></tr>
-            <tr><td>Monitor 24" Skyline</td><td>Monitores</td><td>$179.00</td></tr>
-            <tr><td>Base para laptop FlexStand</td><td>Accesorios</td><td>$29.00</td></tr>
-            <tr><td>Webcam HD FocusCam</td><td>Streaming</td><td>$46.00</td></tr>
-            <tr><td>Micrófono StreamVoice</td><td>Audio</td><td>$73.00</td></tr>
-            <tr><td>Hub USB-C 7 en 1</td><td>Accesorios</td><td>$41.00</td></tr>
-            <tr><td>Disco SSD 1TB Turbo</td><td>Almacenamiento</td><td>$99.00</td></tr>
-            <tr><td>Alfombrilla RGB Glide</td><td>Accesorios</td><td>$18.00</td></tr>
-          </tbody>
-        </table>
-      </section>
+        <div class="product-grid" id="productGrid">
+          <article class="product-card" data-id="aurora" data-name="Teclado mecánico Aurora" data-price="89" data-stock="5">
+            <p class="muted-label">Periféricos</p>
+            <h3>Teclado mecánico Aurora</h3>
+            <p><strong>$89.00</strong></p>
+            <p>Stock disponible: <span class="stock-count">5</span></p>
+            <button class="button add-to-cart" type="button">Añadir al carrito</button>
+          </article>
 
-      <section class="panel">
-        <h2>Carrito de compras</h2>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Producto</th>
-              <th>Cantidad</th>
-              <th>Precio unitario</th>
-              <th>Subtotal</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Teclado mecánico Aurora</td><td>1</td><td>$89.00</td><td>$89.00</td></tr>
-            <tr><td>Mouse inalámbrico Nova</td><td>2</td><td>$34.00</td><td>$68.00</td></tr>
-            <tr><td>Disco SSD 1TB Turbo</td><td>1</td><td>$99.00</td><td>$99.00</td></tr>
-            <tr><td>Alfombrilla RGB Glide</td><td>3</td><td>$18.00</td><td>$54.00</td></tr>
-          </tbody>
-        </table>
-        <p><strong>Total del carrito: $310.00</strong></p>
-        <a class="button" href="pagos.html">Botón de pago</a>
+          <article class="product-card" data-id="nova" data-name="Mouse inalámbrico Nova" data-price="34" data-stock="8">
+            <p class="muted-label">Periféricos</p>
+            <h3>Mouse inalámbrico Nova</h3>
+            <p><strong>$34.00</strong></p>
+            <p>Stock disponible: <span class="stock-count">8</span></p>
+            <button class="button add-to-cart" type="button">Añadir al carrito</button>
+          </article>
+
+          <article class="product-card" data-id="pulse" data-name="Audífonos Pulse X" data-price="57" data-stock="4">
+            <p class="muted-label">Audio</p>
+            <h3>Audífonos Pulse X</h3>
+            <p><strong>$57.00</strong></p>
+            <p>Stock disponible: <span class="stock-count">4</span></p>
+            <button class="button add-to-cart" type="button">Añadir al carrito</button>
+          </article>
+
+          <article class="product-card" data-id="skyline" data-name="Monitor 24&quot; Skyline" data-price="179" data-stock="3">
+            <p class="muted-label">Monitores</p>
+            <h3>Monitor 24&quot; Skyline</h3>
+            <p><strong>$179.00</strong></p>
+            <p>Stock disponible: <span class="stock-count">3</span></p>
+            <button class="button add-to-cart" type="button">Añadir al carrito</button>
+          </article>
+
+          <article class="product-card" data-id="flexstand" data-name="Base para laptop FlexStand" data-price="29" data-stock="7">
+            <p class="muted-label">Accesorios</p>
+            <h3>Base para laptop FlexStand</h3>
+            <p><strong>$29.00</strong></p>
+            <p>Stock disponible: <span class="stock-count">7</span></p>
+            <button class="button add-to-cart" type="button">Añadir al carrito</button>
+          </article>
+
+          <article class="product-card" data-id="focuscam" data-name="Webcam HD FocusCam" data-price="46" data-stock="6">
+            <p class="muted-label">Streaming</p>
+            <h3>Webcam HD FocusCam</h3>
+            <p><strong>$46.00</strong></p>
+            <p>Stock disponible: <span class="stock-count">6</span></p>
+            <button class="button add-to-cart" type="button">Añadir al carrito</button>
+          </article>
+        </div>
       </section>
     </main>
+
+    <button class="floating-cart" id="openCart" type="button" aria-haspopup="dialog" aria-controls="cartModal">
+      🛒 Carrito (<span id="cartCount">0</span>)
+    </button>
+
+    <div class="modal-backdrop" id="cartModal" role="dialog" aria-modal="true" aria-labelledby="cartTitle" hidden>
+      <section class="modal-card">
+        <div class="modal-header">
+          <h2 id="cartTitle">Carrito de compras</h2>
+          <button class="button button-secondary" id="closeCart" type="button">Cerrar</button>
+        </div>
+
+        <div id="cartContent">
+          <p class="helper-text">No hay ítems en el carrito.</p>
+        </div>
+
+        <p><strong>Total del carrito: $<span id="cartTotal">0.00</span></strong></p>
+        <a class="button" href="pagos.html">Ir a pago</a>
+      </section>
+    </div>
+
+    <script>
+      const cart = new Map();
+      const productCards = document.querySelectorAll('.product-card');
+      const cartCount = document.getElementById('cartCount');
+      const cartTotal = document.getElementById('cartTotal');
+      const cartContent = document.getElementById('cartContent');
+      const cartModal = document.getElementById('cartModal');
+
+      function renderCart() {
+        const items = Array.from(cart.values());
+        const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
+        const total = items.reduce((sum, item) => sum + item.quantity * item.price, 0);
+
+        cartCount.textContent = totalItems;
+        cartTotal.textContent = total.toFixed(2);
+
+        if (!items.length) {
+          cartContent.innerHTML = '<p class="helper-text">No hay ítems en el carrito.</p>';
+          return;
+        }
+
+        cartContent.innerHTML = `
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio unitario</th>
+                <th>Subtotal</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${items
+                .map(
+                  (item) => `
+                <tr>
+                  <td>${item.name}</td>
+                  <td>${item.quantity}</td>
+                  <td>$${item.price.toFixed(2)}</td>
+                  <td>$${(item.quantity * item.price).toFixed(2)}</td>
+                </tr>`
+                )
+                .join('')}
+            </tbody>
+          </table>`;
+      }
+
+      productCards.forEach((card) => {
+        const button = card.querySelector('.add-to-cart');
+        const stockCount = card.querySelector('.stock-count');
+
+        button.addEventListener('click', () => {
+          const id = card.dataset.id;
+          const name = card.dataset.name;
+          const price = Number(card.dataset.price);
+          const currentStock = Number(card.dataset.stock);
+
+          if (currentStock <= 0) {
+            return;
+          }
+
+          card.dataset.stock = String(currentStock - 1);
+          stockCount.textContent = card.dataset.stock;
+
+          if (Number(card.dataset.stock) === 0) {
+            button.disabled = true;
+            button.textContent = 'Sin stock';
+          }
+
+          const existing = cart.get(id);
+          if (existing) {
+            existing.quantity += 1;
+          } else {
+            cart.set(id, { id, name, price, quantity: 1 });
+          }
+
+          renderCart();
+        });
+      });
+
+      document.getElementById('openCart').addEventListener('click', () => {
+        cartModal.hidden = false;
+      });
+
+      document.getElementById('closeCart').addEventListener('click', () => {
+        cartModal.hidden = true;
+      });
+
+      cartModal.addEventListener('click', (event) => {
+        if (event.target === cartModal) {
+          cartModal.hidden = true;
+        }
+      });
+
+      renderCart();
+    </script>
   </body>
 </html>
