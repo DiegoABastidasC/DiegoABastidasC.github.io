@@ -388,3 +388,85 @@ input {
   align-items: center;
   gap: 1rem;
 }
+
+.resume {
+  padding: 2.5rem 0 3rem;
+}
+
+.resume-header {
+  padding-bottom: 1.4rem;
+  border-bottom: 2px solid rgba(156, 163, 175, 0.35);
+}
+
+.resume-header h1 {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.85rem, 3.5vw, 2.5rem);
+}
+
+.resume-location {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.12rem;
+}
+
+.resume-links {
+  list-style: none;
+  margin: 0.9rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.resume-links a {
+  color: #a5f3fc;
+  text-decoration: none;
+}
+
+.resume-links a:hover {
+  text-decoration: underline;
+}
+
+.resume-section {
+  padding: 1.35rem 0;
+  border-bottom: 2px solid rgba(156, 163, 175, 0.35);
+}
+
+.resume-section:last-child {
+  border-bottom: none;
+}
+
+.resume-section h2 {
+  margin: 0 0 0.9rem;
+  font-size: 1.7rem;
+}
+
+.resume-section p,
+.resume-section li {
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.skills-list,
+.languages-list,
+.resume-section ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.experience-item + .experience-item,
+.education-item + .education-item {
+  margin-top: 1.1rem;
+}
+
+.experience-item h3,
+.education-item h3 {
+  margin: 0;
+  font-size: 1.24rem;
+}
+
+.experience-meta {
+  margin: 0.35rem 0 0.65rem;
+  color: var(--muted);
+}
